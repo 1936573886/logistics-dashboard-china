@@ -1,3 +1,6 @@
+<img width="2542" height="1430" alt="屏幕截图 2026-09-21 163730" src="https://github.com/user-attachments/assets/434e81fc-be10-406f-a04e-e2d35a2f19d1" />
+<img width="2550" height="1426" alt="屏幕截图 2026-09-21 163759" src="https://github.com/user-attachments/assets/acc260c5-79b5-441e-9408-e510714dac70" />
+<img width="2528" height="1428" alt="屏幕截图 2026-09-21 164345" src="https://github.com/user-attachments/assets/d48065bd-8aa5-4d37-b772-4a6396a047c6" />
 # logistics-dashboard-china
 中国城市物流网络可视化看板 | Power BI
 # 中国城市物流网络可视化看板
