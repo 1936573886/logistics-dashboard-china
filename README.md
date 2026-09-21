@@ -11,3 +11,7 @@
 
 ## 技能
 Power BI、数据可视化、物流网络分析
+## 文件说明
+- `logistics_network_dashboard.pbix`：Power BI 交互式看板源文件
+- `logistics_analysis.py`：数据清洗与预处理脚本（Pandas）
+- `物流分级报表_2026-08-28.xlsx`：原始数据与分级报表
