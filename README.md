@@ -15,3 +15,8 @@ Power BI、数据可视化、物流网络分析
 - `logistics_network_dashboard.pbix`：Power BI 交互式看板源文件
 - `logistics_analysis.py`：数据清洗与预处理脚本（Pandas）
 - `物流分级报表_2026-08-28.xlsx`：原始数据与分级报表
+## 数据处理流程
+1. 使用 Pandas 读取原始 Excel 数据
+2. 清洗缺失值与异常值
+3. 按城市和运输方式进行聚合与分级
+4. 输出清洗后的数据供 Power BI 使用
