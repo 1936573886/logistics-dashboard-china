@@ -1,0 +1,21 @@
+# 敏感信息
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 输出产物
+# 注意：output/ 里的 Excel 是 ADS 成果，故意提交进仓库，
+#       这样别人不用跑代码就能直接看到结果
+*.log
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
