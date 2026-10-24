@@ -46,21 +46,45 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
 # 已知可访问的公报页面（人工核实）
+# 说明：官网列表页的分页由 JS 驱动，无法程序化枚举，
+#       因此这里维护的是通过站内搜索 + 信息公开索引逐一核实过的 URL 清单。
+#       新增 URL 时请先手动打开确认：页面存在，且正文含「邮政行业运行情况」。
+#
+# 注：各省子站（yn / jx / fj.spb.gov.cn 等）会转载同一批公报，内容重复，
+#     为避免脏数据不抓取。
 SEED_URLS = [
-    "/gjyzj/c200045/202102/9ce7faa668fd4034853e330dc0e72810.shtml",
-    "/gjyzj/c200045/202108/cf289a051013453cb2d6eefcb6cb4585.shtml",
-    "/gjyzj/c200045/202110/02c51bd4c9cd4b2a8e521509d48b4391.shtml",
-    "/gjyzj/c100015/c100016/202209/190d0392f63c4e62a9bcc458ae5562f3.shtml",
-    "/gjyzj/c100015/c100016/202211/fef4774760f44e9e93fadfa525035595.shtml",
-    "/gjyzj/c100276/202410/b296f727c16a494387269b964b38e3e8.shtml",
-    "/gjyzj/c100015/c100016/202609/5da542159e1449b4ba8334b6054e0718.shtml",
-    "/gjyzj/c200045/202108/ed4a1e698fa84c7fbf297310227d53a5.shtml",
-    "/gjyzj/c100276/202308/969261ace8a14315a843423bf825adb6.shtml",
-    "/gjyzj/c100276/202407/c5cd6e7c273342ae8ff7f22b2ed6045d.shtml",
-    "/gjyzj/c100277/202507/0bf3ba3e43414bef8e07299f5aac7eeb.shtml",
-    "/gjyzj/c200039/202304/e4a775da6c074576a40f131e1330d91d.shtml",
-    "/gjyzj/c100276/202501/460d02f2e54c4d0ebbba3a4f431d0042.shtml",
-    "/gjyzj/c100276/202410/d342f99765a04e71b7fda798e185f1ab.shtml",
+    # ---- 年度 ----
+    "/gjyzj/c100015/c100016/202101/2ef764639616407d82cba2aa6f4ae74d.shtml",  # 2020年
+    "/gjyzj/c100015/c100016/202201/d278cb7483544a729e394c17e387a7e6.shtml",  # 2021年
+    "/gjyzj/c200039/202304/e4a775da6c074576a40f131e1330d91d.shtml",          # 2022年
+    "/gjyzj/2022lhbjzlkt/202403/22e465692d4746f8ae89c7beae8b404e.shtml",     # 2023年
+    "/gjyzj/c100276/202501/460d02f2e54c4d0ebbba3a4f431d0042.shtml",          # 2024年
+    "/gjyzj/c100015/c100016/202601/e6e402458627430daca67f9354c179ed.shtml",  # 2025年
+    # ---- 季度 / 半年度 ----
+    "/gjyzj/c200045/202004/7778c3ef3d784e8391371294f637027f.shtml",          # 2020年一季度
+    "/gjyzj/c200045/202108/ed4a1e698fa84c7fbf297310227d53a5.shtml",          # 2021年上半年
+    "/gjyzj/c100015/c100016/202110/90a2b3fa247043bcb4afa27c9d66aedc.shtml",  # 2021年前三季度
+    "/gjyzj/c100276/202308/969261ace8a14315a843423bf825adb6.shtml",          # 2023年上半年
+    "/gjyzj/c100015/c100016/202407/c21604618b0342efa51e6b7c5c95d358.shtml",  # 2024年上半年
+    "/gjyzj/c100276/202410/d342f99765a04e71b7fda798e185f1ab.shtml",          # 2024年前三季度
+    # ---- 月度 ----
+    "/gjyzj/c200045/202102/9ce7faa668fd4034853e330dc0e72810.shtml",          # 2021年1月
+    "/gjyzj/c200045/202108/cf289a051013453cb2d6eefcb6cb4585.shtml",          # 2021年7月
+    "/gjyzj/c200045/202110/02c51bd4c9cd4b2a8e521509d48b4391.shtml",          # 2021年9月
+    "/gjyzj/c100015/c100016/202209/190d0392f63c4e62a9bcc458ae5562f3.shtml",  # 2022年8月
+    "/gjyzj/c100015/c100016/202211/fef4774760f44e9e93fadfa525035595.shtml",  # 2022年10月
+    "/gjyzj/c100276/202410/b296f727c16a494387269b964b38e3e8.shtml",          # 2024年1-9月
+    "/gjyzj/c100015/c100016/202609/5da542159e1449b4ba8334b6054e0718.shtml",  # 2026年1-8月
+    # ---- 统计公报 ----
+    "/gjyzj/c100277/202605/639737d297434c83ab880b0a739bfb29.shtml",          # 2025年统计公报解读
+    # ---- 2024 年（用于构建连续月度序列）----
+    "/gjyzj/c100015/c100016/202404/606fd6a6318e4055b86a06aa2d7cb7a6.shtml",  # 2024年一季度
+    "/gjyzj/c100015/c100016/202405/1b2fc1cd9a174ae38596f426bc65f11f.shtml",  # 2024年4月
+    "https://www.gov.cn/lianbo/bumen/202406/content_6957791.htm",             # 2024年5月（中国政府网转载）
+    "/gjyzj/c100015/c100016/202408/b9ead4244d384c4b8f940c6815aee683.shtml",  # 2024年7月
+    "/gjyzj/c100015/c100016/202409/cdc064712a2e43e8899fdd04b398d66d.shtml",  # 2024年8月
+    "/gjyzj/c100015/c100016/202411/cb8e6841781c41d59bab21365b0ed452.shtml",  # 2024年1-10月
+    "/gjyzj/c100015/c100016/202412/213132b50e1c458284e07bfde40a1d72.shtml",  # 2024年1-11月
 ]
 
 
@@ -99,19 +123,24 @@ def to_num(x) -> float | None:
 
 PERIOD_RE = re.compile(
     r"(20\d{2})\s*年\s*"
-    r"(?:(\d{1,2})\s*月份?(?!\d)"      # 8月份
-    r"|(1\s*[-—]\s*\d{1,2}\s*月)"      # 1-8月
-    r"|(上半年)"
-    r"|(前三季度)"
-    r"|(全年))?"
+    r"(?:(\d{1,2})\s*月份?(?!\d)"        # 8月份
+    r"|(1\s*[-—]\s*\d{1,2}\s*月)"        # 1-8月
+    r"|(上半年|下半年)"                   # 上半年
+    r"|(前三季度)"                       # 前三季度
+    r"|([一二三四])\s*季度"               # 一季度
+    r"|(全年))?"                         # 全年
 )
+
+# 「X季度」→ 该季度结束月份
+QUARTER_END = {"一": 3, "二": 6, "三": 9, "四": 12}
 
 
 def parse_period(html: str) -> tuple[str, str, int, int] | None:
     """
-    从页面正文识别报告期。
-    兼容三种标题写法：
+    从页面正文识别报告期。兼容以下标题写法：
         国家邮政局公布2023年8月邮政行业运行情况
+        国家邮政局公布2024年1-9月邮政行业运行情况
+        国家邮政局公布2020年一季度邮政行业运行情况
         国家邮政局关于2021年上半年行业经济运行情况的通报
         国家邮政局公布2022年邮政行业运行情况      ← 无月份词，视为年度
     """
@@ -124,7 +153,8 @@ def parse_period(html: str) -> tuple[str, str, int, int] | None:
             continue
         ym = matches[-1]
         year = int(ym.group(1))
-        g2, g3, g4, g5, g6 = ym.group(2), ym.group(3), ym.group(4), ym.group(5), ym.group(6)
+        g2, g3, g4, g5, g6, g7 = (ym.group(2), ym.group(3), ym.group(4),
+                                  ym.group(5), ym.group(6), ym.group(7))
 
         if g2:
             return f"{year}年{int(g2)}月", "月度", year, int(g2)
@@ -133,9 +163,17 @@ def parse_period(html: str) -> tuple[str, str, int, int] | None:
             mm = int(re.search(r"[-—]\s*(\d{1,2})", g3).group(1))
             return f"{year}年1-{mm}月", "月度区间", year, mm
         if g4:
+            if g4 == "下半年":
+                return f"{year}年下半年", "半年累计", year, 12
             return f"{year}年上半年", "半年度", year, 6
         if g5:
             return f"{year}年前三季度", "季度累计", year, 9
+        if g6:
+            # 「一季度」这类，必须单独处理：
+            # 否则会掉进下面的「无期间词 → 年度」分支，
+            # 把一季度数据错标成全年，进而和真正的全年数据合并到一起。
+            end_m = QUARTER_END[g6]
+            return f"{year}年{g6}季度", "季度", year, end_m
         # 无任何期间词 → 年度报告
         return f"{year}年全年", "年度", year, 12
     return None
@@ -369,9 +407,12 @@ def main() -> None:
 
     national, province, city = [], [], []
     ok, skipped = 0, []
+    # 记录「报告期 → 来源 URL」，用于检测同一报告期被两个不同页面命中
+    period_sources: dict[str, set[str]] = {}
 
     for rel in SEED_URLS:
-        url = BASE_URL + rel
+        # 允许种子写成相对路径（默认挂到国家邮政局域名）或完整 URL（如政府网转载）
+        url = rel if rel.startswith("http") else BASE_URL + rel
         try:
             html = fetch(url)
         except Exception as e:
@@ -384,6 +425,7 @@ def main() -> None:
                 print(f"[SKIP] {url}")
             continue
         ok += 1
+        period_sources.setdefault(page["key"]["period_label"], set()).add(url)
         national += page["national"]
         province += page["province"]
         city += page["city_volume"] + page["city_income"]
@@ -411,6 +453,16 @@ def main() -> None:
     print(f"  全国汇总 {len(national):>4} 行  → data/raw/spb_national.csv")
     print(f"  分省数据 {len(province):>4} 行  → data/raw/spb_province.csv")
     print(f"  城市数据 {len(city):>4} 行  → data/raw/spb_city.csv")
+
+    # 同一报告期被多个页面命中 = 数据可能被覆盖，必须人工确认
+    dupes = {k: v for k, v in period_sources.items() if len(v) > 1}
+    if dupes:
+        print(f"\n⚠️  发现 {len(dupes)} 个报告期被多个页面命中（数据可能互相覆盖）：")
+        for label, urls in dupes.items():
+            print(f"  {label}")
+            for u in urls:
+                print(f"    - {u}")
+
     if skipped:
         print(f"\n未解析 {len(skipped)} 篇：")
         for u, why in skipped:
