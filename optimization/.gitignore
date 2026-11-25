@@ -1,0 +1,6 @@
+# matplotlib 字体缓存（运行时自动生成）
+.mplcache/
+
+# Python
+__pycache__/
+*.pyc
