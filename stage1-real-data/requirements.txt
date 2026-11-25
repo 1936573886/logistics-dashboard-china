@@ -4,3 +4,7 @@ PyMySQL>=1.1.0
 openpyxl>=3.1.0
 python-dotenv>=1.0.0
 lxml>=4.9.0
+
+# 需求预测模块（analysis/forecast.py）
+statsmodels>=0.14.0
+matplotlib>=3.7.0
